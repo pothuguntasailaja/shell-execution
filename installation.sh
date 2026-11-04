@@ -9,21 +9,18 @@ if [ $USER_ID -ne 0 ]; then
 fi
 
 
+VALIDATE(){
+if [ $? -ne 0 ]; then
+    echo "$2 installation is FAILURE...."
+    exit 1
+    else
+    echo "$2 installation is SUCCESS...."
+fi
+}
 
 dnf install mysql -y 
+VALIDATE $? "MYSQL"
 
-if [ $? -ne 0 ]; then
-    echo "MYSQL installation is FAILURE...."
-    exit 1
-    else
-    echo "MYSQL installation is SUCCESS...."
-fi
 
 dnf install nginx -y
-
-if [ $? -ne 0 ]; then
-    echo "NGINX installation is FAILURE...."
-    exit 1
-    else
-    echo "NGINX installation is SUCCESS...."
-fi
+VALIDATE $? "NGINX"
