@@ -18,8 +18,8 @@ fi
 }
 
 
-dnf install mysql -y
-VALIDATE $? "MYSQLLL"
+dnf install mysqlll -y
+VALIDATE $? "MYSQL"
 
 dnf install nginx -y
 VALIDATE $? "NGINX"
