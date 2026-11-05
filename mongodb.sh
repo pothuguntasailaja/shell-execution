@@ -32,7 +32,7 @@ fi
 
 cp $SCRIPT_DIR/mongo.repo /etc/yum.repos.d/mongo.repo
 
-dnf install mongodb-org -y 
+dnf install mongodb-org -y &>>$LOG_FILE
 
 systemctl enable mongod 
 systemctl start mongod 
