@@ -43,7 +43,7 @@ dnf install nodejs -y &>>$LOG_FILE
    useradd --system --home /app --shell /sbin/nologin --comment "roboshop system user" roboshop
 fi
 
-mkdir /app 
+mkdir -p /app 
 VALIDATE $? "CREATE APP DIRECTORY"
 
 curl -o /tmp/catalogue.zip https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip  &>>$LOG_FILE
