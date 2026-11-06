@@ -84,8 +84,15 @@ VALIDATE $? "START CATALOGUE"
 cp $SCRIPT_NAME/mongo.repo /etc/yum.repos.d/mongo.repo   &>>$LOG_FILE
 VALIDATE $? "COPYING MONGODB SERVICES"
 
-dnf install mongodb-mongosh -y    &>>$LOG_FILE
-VALIDATE $? "INSTALL MONGODB"
+INDEX=$(mongosh mongodb.daws86s.de --quiet --eval "db.getMongo().getDBNames().indexOf('catalogue')")
+if [ $INDEX -lt 0 ]; then
+     mongosh --host $MONGODB_HOST </app/db/master-data.js &>>$LOG_FILE
+     VALIDATE $? "Loading Catalogue Products"
+else
+    echo -e "Catalogue Products already Loaded.... $Y SKIPPING $N"
+fi
+
+
 
 mongosh --host $MONGODB_HOST </app/db/master-data.js   &>>$LOG_FILE
 VALIDATE $? "LOADING THE PRODUCTS"
