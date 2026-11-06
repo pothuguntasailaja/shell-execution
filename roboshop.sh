@@ -1,9 +1,9 @@
 #!/bin/bash
 
 AMI_ID="ami-0055977a6e828a4f4"
-SG_ID="sg-0c61fbce81bf52f18"
-ZONE_ID="Z057768411GBBUOBGRPG8"
-DOMAIN_NAME="daws86s.de"
+SG_ID="sg-0c61fbce81bf52f18"   # #sg-0c61fbce81bf52f18   # replace
+ZONE_ID="Z057768411GBBUOBGRPG8"  # Z057768411GBBUOBGRPG8  # replace
+DOMAIN_NAME="daws86s.de" 
 
 for instance in $@
 do
