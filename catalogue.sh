@@ -94,9 +94,6 @@ fi
 
 
 
-mongosh --host $MONGODB_HOST </app/db/master-data.js   &>>$LOG_FILE
-VALIDATE $? "LOADING THE PRODUCTS"
-
 
 systemctl restart catalogue &>>$LOG_FILE
 VALIDATE $? "Restarting Catalogue Service"
