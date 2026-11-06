@@ -30,7 +30,7 @@ fi
 
 
 
-dnf module disable nodejs -y &>>$LOG_FILE
+dnf module disable nodejs -y   &>>$LOG_FILE
 VALIDATE $? "DISABLE NODEJS"
 
 
