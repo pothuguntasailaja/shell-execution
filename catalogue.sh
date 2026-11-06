@@ -12,6 +12,7 @@ SCRIPT_NAME=$(echo $0 | cut -d "." -f1)
 LOG_FILE="$LOG_FOLDER/$SCRIPT_NAME.log"
 SCRIPT_NAME=$PWD
 MONGODB_HOST=mongodb.daws86s.de
+mkdir -p $LOG_FOLDER
 
 
 if [ $USER_ID -ne 0 ]; then
