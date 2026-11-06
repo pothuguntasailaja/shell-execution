@@ -37,54 +37,54 @@ VALIDATE $? "DISABLE NODEJS"
 dnf module enable nodejs:20 -y  &>>$LOG_FILE
 VALIDATE $? "ENABLE NODEJS"
 
-
-dnf install nodejs -y
+ 
+dnf install nodejs -y    &>>$LOG_FILE
 VALIDATE $? "INSTALL NODEJS"
 
 id roboshop
 if [ $? -ne 0 ]; then
-useradd --system --home /app --shell /sbin/nologin --comment "roboshop system user" roboshop
+useradd --system --home /app --shell /sbin/nologin --comment "roboshop system user" roboshop   &>>$LOG_FILE
 VALIDATE $? "CREATE SYSTEM USER"
 fi
 
-mkdir -p /app 
+mkdir -p /app   &>>$LOG_FILE
 VALIDATE $? "CREATING APP DIRECTORY"
 
-curl -o /tmp/catalogue.zip https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip 
+curl -o /tmp/catalogue.zip https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip   &>>$LOG_FILE
 VALIDATE $? "DOWNLOAD THE CODE"
 
-cd /app 
+cd /app   &>>$LOG_FILE
 VALIDATE $? "CHANGE APP DIRECTORY"
 
-rm -rf /app/*
+rm -rf /app/*  &>>$LOG_FILE
 VALIDATE $? "remove old code"
 
-unzip /tmp/catalogue.zip
+unzip /tmp/catalogue.zip   &>>$LOG_FILE
 VALIDATE $? "UNZIP THE CODE"
 
-cd /app 
+cd /app   &>>$LOG_FILE
 VALIDATE $? "CHANGE APP DIRECTORY"
 
-npm install 
+npm install   &>>$LOG_FILE
 VALIDATE $? "INSTALL DEPENDENCIES"
 
-cp $SCRIPT_NAME/catalogue.service /etc/systemd/system/catalogue.service
+cp $SCRIPT_NAME/catalogue.service /etc/systemd/system/catalogue.service   &>>$LOG_FILE
 VALIDATE $? "COPYING CATALOGUE SERVICE"
 
-systemctl daemon-reload
+systemctl daemon-reload   &>>$LOG_FILE
 VALIDATE $? "DAEMON RELOAD"
 
-systemctl enable catalogue
+systemctl enable catalogue   &>>$LOG_FILE
 VALIDATE $? "ENABLE CATALOGUE"
 
-systemctl start catalogue
+systemctl start catalogue   &>>$LOG_FILE
 VALIDATE $? "START CATALOGUE"
 
-cp $SCRIPT_NAME/mongo.repo /etc/yum.repos.d/mongo.repo
+cp $SCRIPT_NAME/mongo.repo /etc/yum.repos.d/mongo.repo   &>>$LOG_FILE
 VALIDATE $? "COPYING MONGODB SERVICES"
 
-dnf install mongodb-mongosh -y
+dnf install mongodb-mongosh -y    &>>$LOG_FILE
 VALIDATE $? "INSTALL MONGODB"
 
-mongosh --host MONGODB-SERVER-IPADDRESS </app/db/master-data.js
+mongosh --host MONGODB-SERVER-IPADDRESS </app/db/master-data.js   &>>$LOG_FILE
 VALIDATE $? "LOADING THE PRODUCTS"
