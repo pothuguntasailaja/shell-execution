@@ -36,7 +36,7 @@ VALIDATE $? "INSTALL PYTHON3"
 id roboshop
 if [ $? -ne 0 ]; then
 useradd --system --home /app --shell /sbin/nologin --comment "roboshop system user" roboshop &>$LOG_FILE
-VALIDATE $? "INSTALL PYTHON3"
+VALIDATE $? "CREATE SYSTEM USER"
 fi
 
 mkdir /app  &>$LOG_FILE
