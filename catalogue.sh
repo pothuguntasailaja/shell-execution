@@ -87,5 +87,5 @@ VALIDATE $? "COPYING THE MONGO SERVICES"
 dnf install mongodb-mongosh -y  &>>$LOG_FILE
 VALIDATE $? "INSTALL MONGODB"
 
-mongosh --host MONGODB-SERVER-IPADDRESS </app/db/master-data.js &>>$LOG_FILE
+mongosh --host $MONGODB_HOST </app/db/master-data.js &>>$LOG_FILE
 VALIDATE $? "LOAD THE PRODUCTS" 
