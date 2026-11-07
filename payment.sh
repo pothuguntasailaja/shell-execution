@@ -39,7 +39,7 @@ useradd --system --home /app --shell /sbin/nologin --comment "roboshop system us
 VALIDATE $? "CREATE SYSTEM USER"
 fi
 
-mkdir /app  &>>$LOG_FILE
+mkdir -p /app  
 VALIDATE $? "create app dir"
 
 curl -L -o /tmp/payment.zip https://roboshop-artifacts.s3.amazonaws.com/payment-v3.zip   &>$LOG_FILE
