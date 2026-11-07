@@ -4,13 +4,13 @@ Description=Payment Service
 [Service]
 User=root
 WorkingDirectory=/app
-// highlight-start
+ highlight-start
 Environment=CART_HOST=cart.daws86s.de
 Environment=CART_PORT=8080
 Environment=USER_HOST=user.daws86s.de
 Environment=USER_PORT=8080
 Environment=AMQP_HOST=rabbitmq.daws86s.de
-// highlight-end
+ highlight-end
 Environment=AMQP_USER=roboshop
 Environment=AMQP_PASS=roboshop123
 
