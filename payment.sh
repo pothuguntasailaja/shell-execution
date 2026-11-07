@@ -39,25 +39,25 @@ useradd --system --home /app --shell /sbin/nologin --comment "roboshop system us
 VALIDATE $? "CREATE SYSTEM USER"
 fi
 
-mkdir /app  &>$LOG_FILE
+mkdir /app  &>>$LOG_FILE
 VALIDATE $? "create app dir"
 
 curl -L -o /tmp/payment.zip https://roboshop-artifacts.s3.amazonaws.com/payment-v3.zip   &>$LOG_FILE
 VALIDATE $? "UNZIP THE CODE"
 
-cd /app   &>$LOG_FILE
+cd /app   &>>$LOG_FILE
 VALIDATE $? "CHANGE APP DIR"
 
-rm -rf /app/*
+rm -rf /app/* &>$LOG_FILE
 VALIDATE $? "REMOVE OLD CODE"
 
-unzip /tmp/payment.zip &>$LOG_FILE
+unzip /tmp/payment.zip &>>$LOG_FILE
 VALIDATE $? "DOWNLOAD THE CODE"
 
 cd /app 
 VALIDATE $? "CHANGE APP DIR"
 
-pip3 install -r requirements.txt &>$LOG_FILE
+pip3 install -r requirements.txt &>>$LOG_FILE
 VALIDATE $? "INSTALL PIP3"
 
 cp $SCRIPT_DIR/payment.service /etc/systemd/system/payment.service
