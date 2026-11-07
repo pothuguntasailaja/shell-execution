@@ -43,9 +43,3 @@ VALIDATE $? "ENABLE MONGODB"
 systemctl start mongod 
 VALIDATE $? "START MONGODB"
 
-sed -i 's/127.0.0.1/0.0.0.0/g' /etc/mongod.conf
-VALIDATE $? "REPLACE THE VALUES"
-
-
-systemctl restart mongod
-VALIDATE $? "RESTART MONGODB"
